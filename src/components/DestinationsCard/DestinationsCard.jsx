@@ -1,11 +1,14 @@
+import { Button } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { LuMapPin } from 'react-icons/lu';
+import { MdOutlineArrowOutward } from 'react-icons/md';
 import { PiCalendarFill } from 'react-icons/pi';
 
 const DestinationsCard = ({destination}) => {
-    const {category, country, imageUrl, duration, destinationName, description
-, departureDate, price} = destination;
+    const {_id, country, imageUrl, duration, destinationName
+, price} = destination;
     return (
         <div className='border border-gray-300'>
             <Image src={imageUrl} alt={destinationName} height={400} width={400} className='h-50'></Image>
@@ -18,6 +21,8 @@ const DestinationsCard = ({destination}) => {
                 </div>
 
                 <p className='flex items-center gap-1'><PiCalendarFill /> <span>{duration}</span></p>
+
+                <Link href={`/destinations/${_id}`}><Button variant='ghost' className={'mt-1 text-cyan-500'}>Book Now <MdOutlineArrowOutward /></Button></Link>
             </div>
         </div>
     );
